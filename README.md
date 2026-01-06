@@ -344,3 +344,28 @@ or
 SELECT SUM(years_employed) AS total_number_of_years_employed FROM employees
 WHERE role = "Engineer";
 ```
+
+# SQL Lesson 12: Order of execution of a Query 
+1. Find the number of movies each director has directed 
+```
+SELECT director, COUNT(*) FROM movies
+GROUP BY director;
+``` 
+2. Find the total domestic and international sales that can be attributed to each director
+ 
+Wrong: 
+```
+SELECT director, SUM(domestic_sales) AS total_domestic_sales, SUM(international_sales) AS total_international_sales
+FROM movies AS m
+INNER JOIN boxoffice AS bo
+ON m.id = bo.movie_id
+GROUP BY director;
+``` 
+After searching, the correct query is:
+```
+SELECT director, SUM(domestic_sales + international_sales) AS total_sales
+FROM movies AS m
+INNER JOIN boxoffice AS bo
+ON m.id = bo.movie_id
+GROUP BY director;
+```
