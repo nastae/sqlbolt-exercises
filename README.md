@@ -369,3 +369,19 @@ INNER JOIN boxoffice AS bo
 ON m.id = bo.movie_id
 GROUP BY director;
 ```
+
+# SQL Lesson 13: Inserting rows
+1. Add the studio's new production, Toy Story 4 to the list of movies (you can use any director)
+```
+INSERT INTO movies (title, director, year, length_minutes)
+VALUES ("Toy Story 4", "John Lasseter", 2019, 100);
+SELECT * FROM movies;   
+```
+2. Toy Story 4 has been released to critical acclaim! It had a rating of 8.7, and made 340 million domestically and 270 million internationally. Add the record to the BoxOffice table. 
+```
+INSERT INTO boxoffice (movie_id, rating, domestic_sales, international_sales)
+VALUES (15, 8.7, 340000000, 270000000);
+SELECT * FROM movies AS m
+INNER JOIN boxoffice AS b
+ON m.id = b.movie_id;
+```
