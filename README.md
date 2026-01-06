@@ -234,3 +234,47 @@ SELECT DISTINCT building_name FROM buildings
 LEFT JOIN employees ON buildings.building_name = employees.building
 WHERE employees.building IS NULL;
 ``` 
+
+# SQL Lesson 9: Queries with expressions
+1. List all movies and their combined sales in millions of dollars ✓
+```
+SELECT *, (domestic_sales + international_sales) / 1000000
+FROM movies AS m
+INNER JOIN boxoffice AS b ON m.id = b.movie_id;
+```
+or
+```
+SELECT title, (domestic_sales + international_sales) / 1000000
+FROM movies AS m
+INNER JOIN boxoffice AS b ON m.id = b.movie_id;
+```
+or
+```
+SELECT title, (domestic_sales + international_sales) / 1000000 AS sales
+FROM movies AS m
+INNER JOIN boxoffice AS b ON m.id = b.movie_id;
+```
+2. List all movies and their ratings in percent
+```
+SELECT title, rating * 10
+FROM movies AS m
+INNER JOIN boxoffice AS b ON m.id = b.movie_id;
+``` 
+or
+```
+SELECT title, rating * 10 AS rating_in_percent
+FROM movies AS m
+INNER JOIN boxoffice AS b ON m.id = b.movie_id;
+```
+3. List all movies that were released on even number years 
+```
+SELECT *
+FROM movies AS m
+WHERE m.year % 2 = 0;
+``` 
+or
+```
+SELECT title
+FROM movies
+WHERE year % 2 = 0;
+```
