@@ -195,3 +195,24 @@ SELECT title FROM movies
 INNER JOIN boxoffice ON movies.id = boxoffice.movie_id
 ORDER BY rating DESC;
 ``` 
+
+# SQL Lesson 7: OUTER JOINs
+1. Find the list of all buildings that have employees ✓ 
+```
+SELECT DISTINCT building_name FROM employees
+LEFT JOIN buildings ON employees.building = buildings.building_name;
+```
+2. Find the list of all buildings and their capacity
+```
+SELECT * FROM buildings;
+```
+or
+```
+SELECT building_name, capacity FROM buildings;
+```
+3. List all buildings and the distinct employee roles in each building (including empty buildings) 
+```
+SELECT DISTINCT building_name, role 
+FROM buildings
+LEFT JOIN employees ON buildings.building_name = employees.building;
+```
