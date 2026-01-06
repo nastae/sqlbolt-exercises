@@ -278,3 +278,37 @@ SELECT title
 FROM movies
 WHERE year % 2 = 0;
 ```
+
+# SQL Lesson 10: Queries with aggregates (Pt. 1)
+1. Find the longest time that an employee has been at the studio 
+```
+SELECT MAX(years_employed) FROM employees;
+``` 
+or
+```
+SELECT MAX(years_employed) AS longest_time FROM employees;
+```
+2. For each role, find the average number of years employed by employees in that role 
+```
+SELECT *, AVG(years_employed) 
+FROM employees
+GROUP BY role;
+``` 
+or
+```
+SELECT *, AVG(years_employed) AS average_number_of_years_employed 
+FROM employees
+GROUP BY role;
+```
+or
+```
+SELECT role, AVG(years_employed) AS average_number_of_years_employed 
+FROM employees
+GROUP BY role;
+```
+3. Find the total number of employee years worked in each building ✓
+```
+SELECT building, SUM(years_employed) AS total_number_of_employee_years 
+FROM employees
+GROUP BY building;
+```
