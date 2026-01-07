@@ -476,6 +476,10 @@ SELECT * from movies;
 DROP TABLE IF EXISTS movies;
 SELECT * FROM boxoffice;
 ``` 
+or
+```
+DROP TABLE IF EXISTS movies;
+```
 2. And drop the BoxOffice table as well 
 ```
 DROP TABLE boxoffice;
