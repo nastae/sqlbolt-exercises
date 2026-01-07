@@ -420,3 +420,23 @@ director = "Lee Unkrich"
 WHERE id = 11;
 SELECT * FROM movies;
 ```
+
+# SQL Lesson 15: Deleting rows 
+1. This database is getting too big, lets remove all movies that were released before 2005. 
+```
+SELECT * FROM movies
+WHERE year < 2005;
+
+DELETE FROM movies
+WHERE year < 2005;
+SELECT * FROM movies;
+``` 
+2. Andrew Stanton has also left the studio, so please remove all movies directed by him. 
+```
+SELECT * FROM movies
+WHERE director = "Andrew Stanton";
+
+DELETE FROM movies
+WHERE director = "Andrew Stanton";
+SELECT * FROM movies;
+``` 
